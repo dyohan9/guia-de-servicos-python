@@ -1,11 +1,14 @@
 import requests, json
 
+__version__ = '0.0.2'
+__author__ = 'Daniel Yohan <dyohan9@gmail.com>'
+
 class Services:
     def __init__(self, id, type):
         if type == "services":
-            self.__content = json.loads(requests.get('http://www.servicos.al.gov.br/api/v1/services/'+id+'.json').content)
+            self.__content = json.loads(requests.get('http://www.servicos.al.gov.br/api/v1/services/%s.json' % id).content)
         elif type == "units":
-            self.__content = json.loads(requests.get('http://www.servicos.al.gov.br/api/v1/units/'+id+'.json').content)
+            self.__content = json.loads(requests.get('http://www.servicos.al.gov.br/api/v1/units/%s.json' % id).content)
 
     def __del__(self):
         self.__content = None
